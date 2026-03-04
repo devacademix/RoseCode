@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  Show,
+  UserButton,
+} from "@clerk/nextjs";
+import {dark} from "@clerk/themes";
 
 import "./globals.css";
 
@@ -12,7 +20,7 @@ const inter = Inter({
 const geistMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
-  weight :["400","500","600","700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,19 +34,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"   
-          enableSystem
-          disableTransitionOnChange
+    <ClerkProvider
+    appearance={{
+      theme:dark,
+    }}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${inter.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
           >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+            <header className="flex items-center gap-3 p-4">
+              <Show when="signed-out">
+                <SignInButton />
+                <SignUpButton>
+                  <button className="bg-rose-500 text-white p-2 rounded-2xl">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
+            </header>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
