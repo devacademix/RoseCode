@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeRose
+
+CodeRose is a Next.js App Router project with a reusable UI system based on shadcn/ui, Tailwind CSS v4, and Radix primitives.
+
+## Features
+
+- Next.js 16 App Router structure (`src/app`)
+- Dark mode support with `next-themes` (`ThemeProvider`)
+- Custom font setup with `Inter` and `IBM Plex Mono`
+- Tailwind CSS v4 theme tokens and global design variables
+- Reusable button variants via `class-variance-authority`
+- Utility-first class merging with `clsx` + `tailwind-merge`
+- 56 prebuilt UI components in `src/components/ui` (accordion, dialog, dropdown, table, tabs, tooltip, and more)
+- Form-ready stack with `react-hook-form`, `zod`, and `@hookform/resolvers`
+- Data visualization support through `recharts`
+- Date and calendar support through `date-fns` and `react-day-picker`
+- Toast/notification support with `sonner`
+
+## Technology Stack
+
+### Core
+
+- Next.js `16.1.1`
+- React `19.2.3`
+- TypeScript `5`
+
+### Styling and UI
+
+- Tailwind CSS `4`
+- tw-animate-css
+- shadcn CLI
+- Radix UI
+- class-variance-authority
+- clsx
+- tailwind-merge
+- lucide-react
+
+### Forms and Validation
+
+- react-hook-form
+- zod
+- @hookform/resolvers
+
+### Component/UX Utilities
+
+- cmdk
+- embla-carousel-react
+- input-otp
+- react-resizable-panels
+- vaul
+- sonner
+
+### Charts and Dates
+
+- recharts
+- date-fns
+- react-day-picker
+
+## Project Structure
+
+```text
+src/
+  app/
+    layout.tsx
+    page.tsx
+    globals.css
+  components/
+    theme-provider.tsx
+    ui/
+  hooks/
+  lib/
+```
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build production bundle:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start production server:
 
-## Learn More
+```bash
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open `http://localhost:3000` in your browser.
