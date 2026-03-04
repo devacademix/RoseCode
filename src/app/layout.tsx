@@ -8,7 +8,6 @@ import {
   Show,
   UserButton,
 } from "@clerk/nextjs";
-
 import {dark} from "@clerk/themes";
 
 import "./globals.css";
@@ -37,7 +36,7 @@ export default function RootLayout({
   return (
     <ClerkProvider
     appearance={{
-      theme:dark
+      theme:dark,
     }}
     >
       <html lang="en" suppressHydrationWarning>

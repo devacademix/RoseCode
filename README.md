@@ -1,45 +1,60 @@
 # CodeRose
 
-CodeRose is a Next.js 16 App Router project with shadcn-style reusable UI components, Tailwind CSS v4 styling, and Clerk authentication.
+CodeRose is a Next.js App Router project with a reusable UI system based on shadcn/ui, Tailwind CSS v4, and Radix primitives.
 
 ## Features
 
-- Next.js App Router architecture (`src/app`)
-- Clerk authentication integration (`ClerkProvider`, `SignInButton`, `SignUpButton`, `UserButton`)
-- Route protection middleware in `src/proxy.ts`
-- Clerk dark theme via `@clerk/themes`
-- Application dark mode support via `next-themes`
-- Custom fonts: `Inter` and `IBM Plex Mono`
-- Tailwind CSS v4 token-driven theming in `src/app/globals.css`
-- 56 reusable UI components in `src/components/ui`
-- Utility-based variant system with `class-variance-authority`
-- Form-ready stack with `react-hook-form` + `zod`
-- Charts and date components support (`recharts`, `date-fns`, `react-day-picker`)
+- Next.js 16 App Router structure (`src/app`)
+- Dark mode support with `next-themes` (`ThemeProvider`)
+- Custom font setup with `Inter` and `IBM Plex Mono`
+- Tailwind CSS v4 theme tokens and global design variables
+- Reusable button variants via `class-variance-authority`
+- Utility-first class merging with `clsx` + `tailwind-merge`
+- 56 prebuilt UI components in `src/components/ui` (accordion, dialog, dropdown, table, tabs, tooltip, and more)
+- Form-ready stack with `react-hook-form`, `zod`, and `@hookform/resolvers`
+- Data visualization support through `recharts`
+- Date and calendar support through `date-fns` and `react-day-picker`
+- Toast/notification support with `sonner`
 
 ## Technology Stack
+
+### Core
 
 - Next.js `16.1.1`
 - React `19.2.3`
 - TypeScript `5`
+
+### Styling and UI
+
 - Tailwind CSS `4`
-- shadcn CLI `3.8.5`
-- Radix UI + base-ui primitives
-- Clerk (`@clerk/nextjs`, `@clerk/themes`)
-- next-themes
-- class-variance-authority, clsx, tailwind-merge
-- react-hook-form, zod, @hookform/resolvers
-- sonner, embla-carousel-react, cmdk, vaul, recharts
+- tw-animate-css
+- shadcn CLI
+- Radix UI
+- class-variance-authority
+- clsx
+- tailwind-merge
+- lucide-react
 
-## Environment Variables
+### Forms and Validation
 
-Create `.env` file with Clerk keys:
+- react-hook-form
+- zod
+- @hookform/resolvers
 
-```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
-CLERK_SECRET_KEY=your_secret_key
-```
+### Component/UX Utilities
 
-If needed, also configure sign-in and sign-up URLs for custom routing.
+- cmdk
+- embla-carousel-react
+- input-otp
+- react-resizable-panels
+- vaul
+- sonner
+
+### Charts and Dates
+
+- recharts
+- date-fns
+- react-day-picker
 
 ## Project Structure
 
@@ -54,21 +69,32 @@ src/
     ui/
   hooks/
   lib/
-  proxy.ts
 ```
 
-## Setup and Run
+## Getting Started
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run development server:
+
+```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Build production bundle:
 
-## Scripts
+```bash
+npm run build
+```
 
-- `npm run dev` - start development server
-- `npm run build` - build production app
-- `npm run start` - start production server
-- `npm run lint` - run ESLint
+Start production server:
+
+```bash
+npm run start
+```
+
+Open `http://localhost:3000` in your browser.
