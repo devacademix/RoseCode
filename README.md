@@ -6,6 +6,7 @@ CodeRose is a Next.js 16 App Router project with shadcn-style reusable UI compon
 
 - Next.js App Router architecture (`src/app`)
 - Clerk authentication integration (`ClerkProvider`, `SignInButton`, `SignUpButton`, `UserButton`)
+- Convex database integration for project storage
 - Route protection middleware in `src/proxy.ts`
 - Clerk dark theme via `@clerk/themes`
 - Application dark mode support via `next-themes`
@@ -25,6 +26,7 @@ CodeRose is a Next.js 16 App Router project with shadcn-style reusable UI compon
 - shadcn CLI `3.8.5`
 - Radix UI + base-ui primitives
 - Clerk (`@clerk/nextjs`, `@clerk/themes`)
+- Convex (`convex`, `convex/react`, `convex/react-clerk`)
 - next-themes
 - class-variance-authority, clsx, tailwind-merge
 - react-hook-form, zod, @hookform/resolvers
@@ -41,6 +43,12 @@ CLERK_SECRET_KEY=your_secret_key
 
 If needed, also configure sign-in and sign-up URLs for custom routing.
 
+Add Convex URL to `.env.local`:
+
+```env
+NEXT_PUBLIC_CONVEX_URL=your_convex_deployment_url
+```
+
 ## Project Structure
 
 ```text
@@ -55,6 +63,26 @@ src/
   hooks/
   lib/
   proxy.ts
+convex/
+  schema.ts
+  project.ts
+```
+
+## Part 3: Database Setup (Done)
+
+Database setup is completed using Convex.
+
+- Schema created in `convex/schema.ts` for `project` table.
+- Index added: `by_owner` on `ownerId`.
+- Mutation/query implemented in `convex/project.ts`:
+  - `create` stores project with authenticated user `ownerId`.
+  - `get` returns only current user's projects.
+- Sample import file available: `sampleData.jsonl`.
+
+Useful commands:
+
+```bash
+npx convex dev
 ```
 
 ## Setup and Run
